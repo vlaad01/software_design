@@ -78,6 +78,24 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    sourceSets {
+        free {
+            java {
+                srcDirs 'src\\free\\java'
+            }
+            res {
+                srcDirs 'src\\free\\res'
+            }
+        }
+        paid {
+            res {
+                srcDirs 'src\\paid\\res'
+            }
+            java {
+                srcDirs 'src\\paid\\java'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -92,6 +110,7 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
