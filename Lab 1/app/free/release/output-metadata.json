@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.example.lab1.free",
+  "variantName": "processFreeReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 3,
+      "versionName": "v1.0.0",
+      "outputFile": "app-free-release.apk"
+    }
+  ]
+}
