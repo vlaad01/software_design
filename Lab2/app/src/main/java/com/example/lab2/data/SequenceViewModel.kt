@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class SequenceViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Sequence>>
+    val readAllData: LiveData<List<Sequence>>
     private val repository: SequenceRepository
 
     init {
@@ -21,6 +21,18 @@ class SequenceViewModel(application: Application): AndroidViewModel(application)
     fun addSequence(sequence: Sequence){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addSequence(sequence)
+        }
+    }
+
+    fun deleteSequence(sequence: Sequence) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteSequence(sequence)
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAll()
         }
     }
 
