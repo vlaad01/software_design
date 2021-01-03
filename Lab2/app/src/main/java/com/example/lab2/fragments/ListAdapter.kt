@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.*
 import com.example.lab2.data.Sequence
 import com.example.lab2.databinding.CustomRowBinding
 
-class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
+class ListAdapter(private val clickListener: OnClickListener) : Adapter<ListAdapter.MyViewHolder>() {
     class MyViewHolder(var binding: CustomRowBinding ) : ViewHolder(binding.root) {
     }
 
@@ -30,13 +30,18 @@ class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
         holder.binding.textWarmUp.text = currentItem.WarmUp.toString()
         holder.binding.textSets.text = currentItem.Sets.toString()
         holder.binding.textWorkOut.text = currentItem.Workout.toString()
-
+        holder.binding.rowLayout.setCardBackgroundColor(Integer.parseInt(currentItem.Color))
+        println(currentItem.Color)
         holder.binding.btnDelete.setOnClickListener {
-            val tmpList = this.sequenceList as MutableList<Sequence>
-            tmpList.removeAt(position)
-            this.sequenceList = tmpList
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(0, itemCount)
+            clickListener.itemDelete(sequenceList[position])
+        }
+
+        holder.binding.btnEdit.setOnClickListener {
+            clickListener.itemEdit(sequenceList[position])
+        }
+
+        holder.binding.btnPlay.setOnClickListener {
+            clickListener.timer(sequenceList[position])
         }
     }
 
@@ -45,4 +50,10 @@ class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
+}
+
+interface OnClickListener {
+    fun itemDelete(sequence: Sequence)
+    fun itemEdit(sequence: Sequence)
+    fun timer(sequence: Sequence)
 }

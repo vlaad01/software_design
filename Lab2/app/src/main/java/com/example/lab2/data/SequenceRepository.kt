@@ -10,6 +10,10 @@ class SequenceRepository(private val sequenceDao: SequenceDao) {
         sequenceDao.addSequence(sequence)
     }
 
+    suspend fun updateSequence(sequence: Sequence){
+        sequenceDao.updateSequence(sequence)
+    }
+
     suspend fun deleteSequence(sequence: Sequence) {
         sequenceDao.deleteSequence(sequence)
     }

@@ -1,8 +1,11 @@
 package com.example.lab2.data
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "sequence_table")
 data class Sequence(
     @PrimaryKey(autoGenerate = true)
@@ -15,4 +18,4 @@ data class Sequence(
     val CoolDown: Int,
     val Cycles: Int,
     val Sets: Int,
-)
+): Parcelable

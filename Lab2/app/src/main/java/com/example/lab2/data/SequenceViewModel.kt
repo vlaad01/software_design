@@ -24,6 +24,12 @@ class SequenceViewModel(application: Application): AndroidViewModel(application)
         }
     }
 
+    fun updateSequence(sequence: Sequence) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateSequence(sequence)
+        }
+    }
+
     fun deleteSequence(sequence: Sequence) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteSequence(sequence)

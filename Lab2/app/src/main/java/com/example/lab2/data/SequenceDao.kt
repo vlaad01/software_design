@@ -12,6 +12,9 @@ interface SequenceDao {
     @Delete
     suspend fun deleteSequence(sequence: Sequence)
 
+    @Update
+    suspend fun updateSequence(sequence: Sequence)
+
     @Query("DELETE FROM sequence_table")
     suspend fun deleteAll()
 
