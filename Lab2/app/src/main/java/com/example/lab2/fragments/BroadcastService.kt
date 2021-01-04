@@ -27,7 +27,7 @@ class BroadcastService : Service() {
 
     override fun onStart(intent: Intent?, startId: Int) {
         timeList = intent!!.getIntegerArrayListExtra("timeList")!!
-        phaseList = intent!!.getStringArrayListExtra("phaseList")!!
+        phaseList = intent.getStringArrayListExtra("phaseList")!!
         startTimer()
     }
 
