@@ -22,12 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-black"
             android:text=""
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnPlay"
+            app:layout_constraintEnd_toStartOf="@+id/btnRead"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -185,6 +184,15 @@
             app:layout_constraintEnd_toStartOf="@+id/btnEdit"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_play" />
+
+        <ImageButton
+            android:id="@+id/btnRead"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            app:layout_constraintEnd_toStartOf="@+id/btnPlay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_eye" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

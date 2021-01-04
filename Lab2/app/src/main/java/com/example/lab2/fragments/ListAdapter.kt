@@ -1,10 +1,13 @@
 package com.example.lab2.fragments
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView.*
 import com.example.lab2.data.Sequence
 import com.example.lab2.databinding.CustomRowBinding
+import com.google.android.material.internal.ContextUtils.getActivity
 
 class ListAdapter(private val clickListener: OnClickListener) : Adapter<ListAdapter.MyViewHolder>() {
     class MyViewHolder(var binding: CustomRowBinding ) : ViewHolder(binding.root) {
@@ -43,17 +46,21 @@ class ListAdapter(private val clickListener: OnClickListener) : Adapter<ListAdap
         holder.binding.btnPlay.setOnClickListener {
             clickListener.timer(sequenceList[position])
         }
+
+        holder.binding.btnRead.setOnClickListener {
+            clickListener.itemRead(sequenceList[position])
+        }
     }
 
     fun setData(sequence: List<Sequence>) {
         this.sequenceList = sequence
         notifyDataSetChanged()
     }
-
 }
 
 interface OnClickListener {
     fun itemDelete(sequence: Sequence)
     fun itemEdit(sequence: Sequence)
     fun timer(sequence: Sequence)
+    fun itemRead(sequence: Sequence)
 }

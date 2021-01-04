@@ -1,5 +1,6 @@
 package com.example.lab2.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -40,6 +41,8 @@ class ListFragment : Fragment() {
                 findNavController().navigate(R.id.action_listFragment_to_timerFragment,
                     bundleOf("currItem" to sequence))
             }
+
+            override fun itemRead(sequence: Sequence) = createSimpleDialog(sequence)
         })
         val recyclerView = binding.recyclerView
 
@@ -69,5 +72,21 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun createSimpleDialog(sequence: Sequence) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(sequence.Name)
+        var resultString = ""
+        for (i in 0..sequence.Sets) {
+            resultString += "${getString(R.string.warm_up)}: ${sequence.WarmUp}\n"
+            for (j in 0..sequence.Cycles) {
+                resultString += "${getString(R.string.workout)}: ${sequence.Workout}\n" +
+                        "${getString(R.string.rest)}: ${sequence.Rest}\n"
+            }
+            resultString += "${getString(R.string.cooldown)}: ${sequence.CoolDown}\n"
+        }
+        builder.setMessage(resultString)
+        builder.show()
     }
 }

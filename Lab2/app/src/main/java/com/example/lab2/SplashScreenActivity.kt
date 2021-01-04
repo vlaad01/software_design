@@ -3,7 +3,6 @@ package com.example.lab2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class SplashScreenActivity : AppCompatActivity() {
         iv_timer.animate().setDuration(1000).alpha(1f).withEndAction{
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            finish()
         }
 
     }
