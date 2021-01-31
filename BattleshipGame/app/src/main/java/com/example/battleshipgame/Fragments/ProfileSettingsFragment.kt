@@ -12,17 +12,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.battleshipgame.databinding.FragmentProfileSettingsBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import android.Manifest
 import android.app.Activity
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import android.webkit.MimeTypeMap
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
-import java.io.IOException
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class ProfileSettingsFragment : Fragment() {
     private lateinit var binding: FragmentProfileSettingsBinding
@@ -42,6 +41,10 @@ class ProfileSettingsFragment : Fragment() {
         binding.btnUploadImage.setOnClickListener {
             uploadImage()
         }
+
+        binding.btnUploadGravatar.setOnClickListener {
+            uploadGravatar()
+        }
         return binding.root
     }
 
@@ -60,6 +63,7 @@ class ProfileSettingsFragment : Fragment() {
 
     private fun saveChanges() {
         val user = mAuth.currentUser!!
+
         val profileUpdates = UserProfileChangeRequest.Builder()
             .setDisplayName(binding.editName.text.toString())
             .setPhotoUri(Uri.parse(imageURI.toString()))
@@ -99,9 +103,21 @@ class ProfileSettingsFragment : Fragment() {
         }
     }
 
-    private fun gravatarImageUpload() {
+    private fun uploadGravatar() {
 
+        fun md5(input: String): String {
+            val md = MessageDigest.getInstance("MD5")
+            return BigInteger(1, md.digest(input.toByteArray())).toString(16)
+                .padStart(32, '0')
+        }
+
+        val hash = md5(mAuth.currentUser!!.email!!)
+        imageURI = Uri.parse("https://www.gravatar.com/avatar/${hash}?s=120")
+        Picasso.get()
+            .load(imageURI)
+            .into(binding.imageView)
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -140,7 +156,6 @@ class ProfileSettingsFragment : Fragment() {
                     }.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             imageURI = task.result
-                            Log.e("LISTENER", imageURI.toString())
                         }
                     }
                 }
