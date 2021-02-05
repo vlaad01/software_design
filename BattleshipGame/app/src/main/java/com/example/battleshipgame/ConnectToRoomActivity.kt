@@ -23,7 +23,7 @@ class ConnectToRoomActivity : AppCompatActivity() {
         binding.btnConnect.setOnClickListener {
             val roomID = binding.textRoomId.text.toString()
             roomModel.connectToRoom(roomID.toInt())
-            startActivity(Intent(this@ConnectToRoomActivity, CreateGameActivity::class.java))
+            startActivity(Intent(this@ConnectToRoomActivity, GameActivity::class.java))
             finish()
         }
         setContentView(binding.root)

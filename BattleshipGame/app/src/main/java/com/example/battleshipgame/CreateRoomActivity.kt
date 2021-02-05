@@ -21,7 +21,7 @@ class CreateRoomActivity : AppCompatActivity() {
         binding.textRoomId.setText(roomModel.roomId.toString())
 
         binding.btnStartGame.setOnClickListener {
-            startActivity(Intent(this@CreateRoomActivity, CreateGameActivity::class.java))
+            startActivity(Intent(this@CreateRoomActivity, GameActivity::class.java))
             finish()
         }
 

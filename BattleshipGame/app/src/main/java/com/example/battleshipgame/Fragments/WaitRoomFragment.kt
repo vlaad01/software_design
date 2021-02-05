@@ -117,7 +117,6 @@ class WaitRoomFragment : Fragment(), AdapterView.OnItemClickListener {
             position / 10, position % 10,
             choosedShip.size, choosedOrientation
         )
-        Log.e("COUNT", choosedShip.count.toString())
         if (choosedShip.count > 0) {
             if (!fieldModel.addShip(ship)) {
                 Toast.makeText(

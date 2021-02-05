@@ -52,7 +52,6 @@ class ProfileSettingsFragment : Fragment() {
         val user = mAuth.currentUser!!
         imageURI = user.photoUrl
 
-        binding.editEmail.setText(user.email)
         binding.editName.setText(user.displayName)
         Picasso.get()
             .load(user.photoUrl.toString())

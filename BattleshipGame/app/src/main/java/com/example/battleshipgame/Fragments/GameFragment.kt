@@ -52,10 +52,10 @@ class GameFragment : Fragment() {
                     val text: String
                     if (snapshot.value.toString() == roomModel.USER_TAG) {
                         text = "Your turn"
-                        binding.textTurnOwner.setTextColor(Color.GREEN)
+                        binding.textTurnOwner.setTextColor(requireContext().resources.getColor(R.color.green))
                     } else {
                         text = "Opponent turn"
-                        binding.textTurnOwner.setTextColor(Color.RED)
+                        binding.textTurnOwner.setTextColor(requireContext().resources.getColor(R.color.red))
                     }
                     binding.textTurnOwner.text = text
                 }
