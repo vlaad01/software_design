@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mAuth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,6 +21,14 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnProfileSettings.setOnClickListener {
             startActivity(Intent(this@MainActivity, ProfileSettingsActivity::class.java))
+        }
+
+        binding.btnCreateGame.setOnClickListener {
+            startActivity(Intent(this@MainActivity, CreateRoomActivity::class.java))
+        }
+
+        binding.btnConnectToGame.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ConnectToRoomActivity::class.java))
         }
 
         updateUI()
