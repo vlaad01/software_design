@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.WaitRoomFragment">
+
+    <GridView
+        android:id="@+id/user_grid_field"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="24dp"
+        android:horizontalSpacing="0dp"
+        android:numColumns="10"
+        android:verticalSpacing="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </GridView>
+
+    <RadioGroup
+        android:id="@+id/positionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnReady"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_grid_field">
+
+        <RadioButton
+            android:id="@+id/radioVertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vertical" />
+
+        <RadioButton
+            android:id="@+id/radioHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horizontal" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/shipTypeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnReady"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_grid_field">
+
+        <RadioButton
+            android:id="@+id/radioBoat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Boat" />
+
+        <RadioButton
+            android:id="@+id/radioCruiser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cruiser" />
+
+        <RadioButton
+            android:id="@+id/radioDestroyer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destroyer" />
+
+        <RadioButton
+            android:id="@+id/radioBattleship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Battleship" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnReady"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="I'm ready"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
