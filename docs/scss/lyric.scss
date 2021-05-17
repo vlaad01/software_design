@@ -1,0 +1,120 @@
+.author {
+    display: flex;
+    margin: 20px;
+
+    &__img {
+        height: 200px;
+        width: 200px;
+        border: 0.15em solid black;
+    }
+
+    &__info {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+        grid-template-areas: "article aside"
+                         "article ."
+                         "article ul";
+    
+    .lyric {
+        grid-area: article;
+        
+        &__marked {
+            background-color: #E0E0E0;
+
+            &:hover {
+                background-color: #FFEE58;
+                transition: background-color 80ms ease-out 80ms;
+            }
+        }
+
+        .clicked {
+            background-color: #FFEE58;;
+        }
+    }
+
+    .annotation {
+        grid-area: aside;
+        padding-left: .5rem;
+        border-left: 0.3rem solid #29B6F6;   
+        p {
+            margin-right: 10px;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .translations {
+        grid-area: ul;
+    }
+}
+
+.buttons-group {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.comments {
+    margin-top: 40px;
+}
+
+.like-button {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background: url(svg/thumbs-up.svg);
+    cursor: pointer;
+}
+
+.dislike-button {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background: url(svg/thumbs-down.svg);
+    cursor: pointer;
+}
+
+.comment {
+    border-bottom: 2px black solid;
+    background-color: #E0E0E0;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+textarea {
+    width: 100%;
+    outline: none;
+    border: 2px solid black;
+    width: 90%;
+    height: 150px;
+}
+
+
+@media (max-width: 980px) {
+    .author {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 981px) {
+    .author {
+        flex-direction: row;
+        align-items:flex-start;
+    }
+}

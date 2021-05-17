@@ -1,0 +1,51 @@
+.group {
+    display: grid;
+    grid-template-columns: 20% 70%;
+    margin: 20px;
+    font-size: 20px;
+
+    &__label {
+        margin: 0 20px;
+    }
+
+    &__input {
+        font-size: 20px;
+        border: none;
+        border-bottom: 2px solid #F5F5F5;
+        outline: none;
+
+        &:focus {
+            border-bottom: 2px solid black;
+            transition: 200ms ease-in;
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    .group {
+        grid-template-columns: 100%;
+
+        &__label {
+            margin: 20px 0 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+    .buttons-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 981px) {
+    .group {
+        grid-template-columns: 20% 70%;
+    }
+}
+
+  
+
