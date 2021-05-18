@@ -1,0 +1,39 @@
+.grid {
+  background-color: white;
+}
+
+.grid__row {
+  -webkit-transition: background-color 100ms ease-out 50ms;
+  transition: background-color 100ms ease-out 50ms;
+  border-bottom: 2px solid #E0E0E0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 6fr 3fr 1fr;
+      grid-template-columns: 6fr 3fr 1fr;
+  text-decoration: none;
+  color: black;
+}
+
+.grid__row:hover {
+  background-color: #E0E0E0;
+}
+
+.grid__item {
+  padding: 20px;
+  font-size: 25px;
+  text-align: start;
+}
+
+.lyrics, .user-tracks {
+  margin: 60px 0;
+}
+
+.lyrics__header, .user-tracks__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=profile.css.map */

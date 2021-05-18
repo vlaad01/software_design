@@ -1,0 +1,151 @@
+.author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px;
+}
+
+.author__img {
+  height: 200px;
+  width: 200px;
+  border: 0.15em solid black;
+}
+
+.author__info {
+  margin-left: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "article aside" "article ." "article ul";
+}
+
+.grid .lyric {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-area: article;
+}
+
+.grid .lyric__marked {
+  background-color: #E0E0E0;
+}
+
+.grid .lyric__marked:hover {
+  background-color: #FFEE58;
+  -webkit-transition: background-color 80ms ease-out 80ms;
+  transition: background-color 80ms ease-out 80ms;
+}
+
+.grid .lyric .clicked {
+  background-color: #FFEE58;
+}
+
+.grid .annotation {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: aside;
+  padding-left: .5rem;
+  border-left: 0.3rem solid #29B6F6;
+}
+
+.grid .annotation p {
+  margin-right: 10px;
+}
+
+.grid .annotation form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.grid .translations {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: ul;
+}
+
+.buttons-group {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.comments {
+  margin-top: 40px;
+}
+
+.like-button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background: url(svg/thumbs-up.svg);
+  cursor: pointer;
+}
+
+.dislike-button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  background: url(svg/thumbs-down.svg);
+  cursor: pointer;
+}
+
+.comment {
+  border-bottom: 2px black solid;
+  background-color: #E0E0E0;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+  outline: none;
+  border: 2px solid black;
+  width: 90%;
+  height: 150px;
+}
+
+@media (max-width: 980px) {
+  .author {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (min-width: 981px) {
+  .author {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+/*# sourceMappingURL=lyric.css.map */
