@@ -132,6 +132,10 @@ textarea {
     header .search {
         margin-left: 10px;
     }
+
+    #btn-login, #btn-logout {
+        margin-right: 20px;
+    }
 }
 
 @media (min-width: 981px) {
@@ -142,5 +146,9 @@ textarea {
 
     .search {
         margin-left: 50px;
+    }
+
+    #btn-login, #btn-logout {
+        margin-right: 50px;
     }
 }

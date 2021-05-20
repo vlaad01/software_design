@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="OnLoad()">
     <header>
         <div class="search">
             <form class="search__form">
@@ -20,16 +20,20 @@
             </form>
         </div>
 
-        <a href="profile.html" class="header__link">Profile</a>
+        <div>
+            <button class="default-button" id="btn-login">Login</button>
+            <button class="default-button" id="btn-logout">Logout</button>
+            <a href="profile.html" id="profile-link" class="header__link">Profile</a>
+        </div>
     </header>
 
     <main>
         <h1>Edit track</h1>
-        <form action="" class="form">
+        <form action="" class="form"  id='crud-track' onsubmit="UploadTrack(this)">
             
             <div class="group">
-                <label for="" class="group__label">Title</label>
-                <input type="text" class="group__input">
+                <label for="title" class="group__label">Title</label>
+                <input type="text" class="group__input" id="title">
             </div>
 
             <div class="group">
@@ -38,18 +42,19 @@
             </div>
 
             <div class="group">
-                <label for="Album" class="group__label">Album</label>
+                <label for="album" class="group__label">Album</label>
                 <input type="text" id="album" class="group__input">
             </div>
 
             <div class="group">
-                <label for="image" class="group__label">Track image</label>
+                <label for="image" id='image-label' class="group__label">Track image</label>
                 <input class="group__input" type="file" id="image">
             </div>
 
             <div class="buttons-group">
-                <button class="default-button">Submit</button>
-                <button class="default-button">Delete</button>
+                <button class="default-button" id="btn-add" type="submit">Submit</button>
+                <button class="default-button" id="btn-update" onclick="updateTrack(this)">Update</button>
+                <button class="default-button" id="btn-delete" onclick="deleteTrack(this)">Delete</button>
             </div>
             
         </form>
@@ -62,5 +67,19 @@
             Grudovik Vladislav, 2021
         </a>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+  
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/crud_track.js"></script>
 </body>
 </html>

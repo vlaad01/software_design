@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/lyric.css">
 </head>
 
-<body>
+<body onload="OnLoad()">
     <header class="header">
         <div class="search">
             <form class="search__form">
@@ -17,17 +17,21 @@
                 <button class="search__button" type="submit"></button>
             </form>
         </div>
-
-        <a href="profile.html" class="header__link">Profile</a>
+        
+        <div>
+            <button class="default-button" id="btn-login">Login</button>
+            <button class="default-button" id="btn-logout">Logout</button>
+            <a href="profile.html" id="profile-link" class="header__link">Profile</a>
+        </div>
     </header>
 
     <main>
         <div class="author">
-            <img src="images/0.png" alt="" class="author__img">
+            <img src="" class="author__img">
             <div class="author__info">
-                <h1>Numb</h1>
-                <h2>Linkin Park</h2>
-                <h3>Album Meteora</h3>
+                <h1 id='title'></h1>
+                <h2 id='author-name'></h2>
+                <h3 id='album'></h3>
             </div>
         </div>
 
@@ -35,133 +39,35 @@
         <section>
             <div class="grid">
                 <aside class='annotation hidden' >
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic optio doloremque incidunt, iure omnis cupiditate deserunt necessitatibus repudiandae molestias exercitationem porro, maxime perferendis, unde voluptates tenetur ut praesentium in nostrum!
-                    </p>
-                    <form action="">
-                        <textarea id="" cols="30" rows="10" placeholder="Add your own annotation"></textarea>
+                    <p id='annotation__text'></p>
+                    <form onsubmit="addAnnotation(this)">
+                        <textarea id="annotation-text" cols="30" rows="10" placeholder="Add your own annotation"></textarea>
                         <input class="default-button" type="submit">
                     </form>
                 </aside>
 
                 <article class="lyric">
-
-                    I'm tired of being what you want me to be <br>
-                    Feeling so faithless, lost under the surface <br>
-                    I don't know what you're expecting of me <br>
-                    Put under the pressure of walking in your shoes <br>
-    
-                    <br>
-                    <mark id='mark-1' class="lyric__marked">
-                         Caught in the undertow, just caught in the undertow 
-                    </mark>
-                    <br>
-
-                    Every step that I take is another mistake to you <br>
-                    Caught in the undertow, just caught in the undertow <br>
-    
-                    <br>
-                    I've become so numb, I can't feel you there <br>
-                    Become so tired, so much more aware <br>
-                    I'm becoming this, all I want to do <br>
-                    Is be more like me and be less like you <br>
-    
-                    <br>
-                    Can't you see that you're smothering me? 
-                    <br>
-                    Holding too tightly, afraid to lose control <br>
-                    'Cause everything that you thought I would be <br>
-                    Has fallen apart, right in front of you <br>
-    
-                    <br>
-                    Caught in the undertow, just caught in the undertow <br>
-                    Every step that I take is another mistake to you <br>
-                    Caught in the undertow, just caught in the undertow <br>
-                    And every second I waste is more than I can take <br>
-    
-                    <br>
-                    I've become so numb, I can't feel you there <br>
-                    Become so tired, so much more aware <br>
-                    I'm becoming this, all I want to do <br>
-                    Is be more like me and be less like you <br>
-    
-                    <br>
-                    And I know I may end up failing, too <br>
-                    But I know you were just like me <br>
-                    With someone disappointed in you <br>
-    
-                    <br>
-                    I've become so numb, I can't feel you there <br>
-                    Become so tired, so much more aware <br>
-                    I'm becoming this, all I want to do <br>
-                    Is be more like me and be less like you <br>
-    
-                    <br>
-                    I've become so numb, I can't feel you there <br>
-                    I'm tired of being what you want me to be <br>
-                    I've become so numb, I can't feel you there <br>
-                    I'm tired of being what you want me to be <br>
                 </article>
     
                 <div class="translations">
-                    Another translations:
-                    <ul>
-                        <li>
-                            <a href="#">English</a>
-                        </li>
-                        <li>
-                            <a href="#">Russian</a>
-                        </li>
+                    All translations:
+                    <ul id="translations__list">
                     </ul>
                 </div>
                     
             </div>
 
             <div class="buttons-group">
-                <button class="like-button"></button>
-                <button class="dislike-button"></button>
-                <button class="default-button">
-                    <a href="crud_lyric.html">
-                        Add your lyric
-                    </a> 
-                </button>
+                <button class="like-button" id='song-like-btn'></button>
+                <button class="dislike-button" id='song-dislike-btn'></button>
             </div>
 
+            <form class="add-comment" onsubmit="addComment()">
+                <textarea id="comment-text" placeholder="Add your comment"></textarea>
+                <input class="default-button" type="submit" name="" id="">
+            </form>
+
             <div class="comments">
-
-                <form action="" class="add-comment">
-                    <textarea name="" id="" placeholder="Add your comment"></textarea>
-                    <input class="default-button" type="submit" name="" id="">
-                </form>
-
-                <div class="comment">
-                    <span class="comment__author">
-                        Jhon Doe
-                    </span>
-
-                    <p class="comment__text">
-                        Nice song!!!
-                    </p>
-
-                    <button class="like-button">
-                    </button>
-
-                    <button class="dislike-button">
-                    </button>
-                </div>
-
-                <div class="comment">
-                    <span class="comment__author">
-                        Jhon Doe
-                    </span>
-
-                    <p class="comment__text">
-                        Bad song!!!
-                    </p>
-
-                    <button class="like-button"></button>
-
-                    <button class="dislike-button"></button>
-                </div>
             </div>
 
         </section>
@@ -178,15 +84,19 @@
         </a>
     </footer>
 
-    <script>
-        const handleMarkClick = () => {
-            let aside = document.getElementsByClassName("annotation")[0]
-            mark.classList.toggle("clicked")
-            aside.classList.toggle("hidden")
-        }
 
-        let mark = document.getElementById('mark-1')
-        mark.addEventListener("click", handleMarkClick)
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+  
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/lyric.js"></script>
 </body>
 </html>

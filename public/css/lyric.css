@@ -125,6 +125,14 @@ textarea {
   height: 150px;
 }
 
+.add-comment {
+  margin-top: 40px;
+}
+
+li {
+  cursor: pointer;
+}
+
 @media (max-width: 980px) {
   .author {
     -webkit-box-orient: vertical;
