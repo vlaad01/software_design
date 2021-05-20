@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="OnLoad()">
     <header>
         <div class="search">
             <form class="search__form">
@@ -18,19 +18,21 @@
             </form>
         </div>
 
-        <a href="profile.html" class="header__link">Profile</a>
+        <div>
+            <button class="default-button" id="btn-login">Login</button>
+            <button class="default-button" id="btn-logout">Logout</button>
+            <a href="profile.html" id="profile-link" class="header__link">Profile</a>
+        </div>
     </header>
 
     <main>
         <h1>Edit lyric</h1>
-        <form action="">
+        <form action="post" onsubmit="createLyric(this)">
             
             <div class="group">
                 <label for="select" class="group__label">Title</label>
-                <select class="group__input">
+                <select class="group__input" id="song-select" onchange="getSelectedSong()">
                     <option value="" selected disabled hidden>Choose a song</option>
-                    <option value="Song 1">Song 1</option>
-                    <option value="Song 2">Song 2</option>
                 </select>
             </div>
 
@@ -46,8 +48,9 @@
             </div>
 
             <div class="buttons-group">
-                <button class="default-button">Submit</button>
-                <button class="default-button">Delete</button>
+                <button class="default-button" id="btn-add" type="submit">Submit</button>
+                <button class="default-button" id="btn-update" onclick="updateLyric()">Update</button>
+                <button class="default-button" id="btn-delete" onclick="deleteLyric()">Delete</button>
             </div>
         </form>
     </main>
@@ -59,5 +62,19 @@
             Grudovik Vladislav, 2021
         </a>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+  
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/crud_lyric.js"></script>
 </body>
 </html>

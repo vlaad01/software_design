@@ -19,33 +19,18 @@
             </form>
         </div>
 
-        <a href="profile.html" class="header__link">Profile</a>
+        
+        <div>
+            <button class="default-button" id="btn-login">Login</button>
+            <button class="default-button" id="btn-logout">Logout</button>
+            <a href="profile.html" id="profile-link" class="header__link">Profile</a>
+        </div>
     </header>
 
     <main>
         <h1>Songs and lyrics</h1> 
 
         <div class="grid">
-            <a href="lyric.html" class="grid__row">
-                <div class="grid__item">1</div>
-                <img src="images/0.png" class="author-image" alt="">
-                <h3 class="grid__item">Numb</h3>
-                <h4 class="grid__item">Linkin Park</h4>  
-            </a>    
-
-            <a href="lyric.html" class="grid__row">
-                <div class="grid__item">2</div>
-                <img src="images/0.png" class="author-image" alt="">
-                <h3 class="grid__item">Numb</h3>
-                <h4 class="grid__item">Linkin Park</h4>  
-            </a>   
-
-            <a href="lyric.html" class="grid__row">
-                <div class="grid__item">3</div>
-                <img src="images/0.png" class="author-image" alt="">
-                <h3 class="grid__item">Numb</h3>
-                <h4 class="grid__item">Linkin Park</h4>  
-            </a>   
         </div>
     </main>
 
@@ -56,5 +41,19 @@
             Grudovik Vladislav, 2021
         </a>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+  
+    <script src="scripts/firebase.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>

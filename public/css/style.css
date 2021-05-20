@@ -163,6 +163,9 @@ textarea:focus {
   header .search {
     margin-left: 10px;
   }
+  #btn-login, #btn-logout {
+    margin-right: 20px;
+  }
 }
 
 @media (min-width: 981px) {
@@ -172,6 +175,9 @@ textarea:focus {
   }
   .search {
     margin-left: 50px;
+  }
+  #btn-login, #btn-logout {
+    margin-right: 50px;
   }
 }
 /*# sourceMappingURL=style.css.map */
