@@ -222,11 +222,19 @@ class LikesDao {
         return dislikes.some(val => val.id == user_id)
     }
 
-    addLike(user_id, ref) {
-        ref.collection('likes').doc(user_id).set({}, {merge: true})
+    async addLike(user_id, ref) {
+        let disliked = await this.isUserDisliked(user_id, ref)
+        if(disliked)
+            return false;
+        await ref.collection('likes').doc(user_id).set({}, {merge: true})
+        return true
     }
 
-    addDislike(user_id, ref) {
-        ref.collection('dislikes').doc(user_id).set({}, {merge: true})
+    async addDislike(user_id, ref) {
+        let liked = await this.isUserLiked(user_id, ref)
+        if (liked)
+            return false;
+        await ref.collection('dislikes').doc(user_id).set({}, {merge: true})
+        return true
     }
 }

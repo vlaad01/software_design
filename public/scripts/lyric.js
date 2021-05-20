@@ -38,16 +38,6 @@ async function loadSong(song_id) {
     let img = document.getElementsByClassName('author__img')[0]
     img.src = song['img_url']
 
-    let liked = await likesDao.isUserLiked(currUser.uid, songRef)
-    let disliked = await likesDao.isUserDisliked(currUser.uid, songRef)
-    const pathList = document.getElementsByTagName('path')
-    const likePath = pathList[0]
-    const dislikePath = pathList[1]
-    if (liked) 
-        likePath.setAttribute('fill', 'green')
-    else
-        dislikePath.setAttribute('fill', 'green')
-
     document.getElementById('title')
         .innerHTML = song['title']
 
@@ -58,16 +48,10 @@ async function loadSong(song_id) {
         .innerHTML = song['album']
 
     document.getElementById('song-like-btn')
-        .addEventListener('click', _ => {
-            likesDao.addLike(currUser.uid, songRef)
-            likePath.setAttribute('fill', 'green')
-        })
+        .addEventListener('click', songBtnLikeClicked)
 
     document.getElementById('song-dislike-btn')
-        .addEventListener('click', _ => {
-            likesDao.addDislike(currUser.uid, songRef)
-            dislikePath.setAttribute('fill', 'green')
-        })
+        .addEventListener('click', songBtnDislikeClicked)
 }
 
 async function loadLyricsList(songId, lyricsId) {
@@ -190,20 +174,39 @@ function mouseDownEvent(event) {
     }
 }
 
-function commentBtnLikeClicked(target) {
-    const path = target.getElementsByTagName('path')
-    path[0].setAttribute('fill', 'green')
-    const commentId = target.parentNode.id
-    const ref = likesDao.getPathForComment(song_id, commentId)
-    likesDao.addLike(currUser.uid, ref)
+async function songBtnLikeClicked(event) {
+    const path = event.target.getElementsByTagName('path')[0]
+    const ref = likesDao.getPathForSong(song_id)
+    const resp = await likesDao.addLike(currUser.uid, ref)
+    if (resp)
+        path.setAttribute('fill', 'green')
 }
 
-function commentBtnDislikeClicked(target) {
+async function songBtnDislikeClicked(event) {
+    const path = event.target.getElementsByTagName('path')
+    const ref = likesDao.getPathForSong(song_id)
+    const resp = await likesDao.addDislike(currUser.uid, ref)
+    if (resp)
+        path[0].setAttribute('fill', 'red')
+}
+
+async function commentBtnLikeClicked(target) {
     const path = target.getElementsByTagName('path')
-    path[0].setAttribute('fill', 'red')
     const commentId = target.parentNode.id
     const ref = likesDao.getPathForComment(song_id, commentId)
-    likesDao.addDislike(currUser.uid, ref)
+    const resp = await likesDao.addLike(currUser.uid, ref)
+    if (resp)
+        path[0].setAttribute('fill', 'green')
+}
+
+async function commentBtnDislikeClicked(target) {
+    const path = target.getElementsByTagName('path')
+    
+    const commentId = target.parentNode.id
+    const ref = likesDao.getPathForComment(song_id, commentId)
+    const resp = await likesDao.addDislike(currUser.uid, ref)
+    if (resp)
+        path[0].setAttribute('fill', 'red')
 }
 
 function getLikeIcon(userLiked) {
