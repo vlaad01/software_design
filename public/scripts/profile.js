@@ -28,9 +28,9 @@ async function updateUserLyrics(currentUser) {
     const lyricDao = new LyricDao()
     const songDao = new SongDao()
     const userLyrics = await lyricDao.fetchUserLyrics(currentUser.uid)
+    console.log(userLyrics)
     for (lyric of userLyrics) {
         song = await songDao.getSongById(lyric.song_id)
-
         lyricsList = document.getElementById('lyrics-grid')
 
         newRow = `

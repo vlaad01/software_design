@@ -64,7 +64,7 @@ function updateUserSongs(user) {
 }
 
 function getSelectedSong() {
-    index = select.selectedIndex
+    index = songSelect.selectedIndex
 }
 
 async function OnLoad() {
@@ -90,7 +90,7 @@ async function OnLoad() {
 }
 
 function convertNewLinesToBr(str) {
-    return str.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    return str.replace(/(?:\r\n|\r|\n)/g, ' <br>');
 }
 
 function convertBrToNewLines(str) {
